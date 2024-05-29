@@ -147,8 +147,8 @@ public class DouUtil {
 	public static  Map<String, String> getBogus(String aweme_id,String type) throws HttpException, IOException {
 		 Map<String, String> res = new HashMap<String, String>();
 		 if(null !=Global.tiktokCookie && !"".equals(Global.tiktokCookie) ) {
-			 String cookie = simplifycookie(Global.tiktokCookie);
-//			 String cookie = Global.tiktokCookie;
+//			 String cookie = simplifycookie(Global.tiktokCookie);
+			 String cookie = Global.tiktokCookie;
 			 Map<String, String> generatetoken = generatetoken(aweme_id);
 			 String httpget = DouUtil.httpget(generatetoken.get("url").trim(),cookie);
 			 JSONObject data = JSONObject.parseObject(httpget);

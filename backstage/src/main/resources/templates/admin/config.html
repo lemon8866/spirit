@@ -52,6 +52,10 @@
                                         <input class="form-control" type="text" id="taskcron" name="taskcron" placeholder="默认0 0 0/3 * * ?  三小时一次" th:value="${config.taskcron}">
                                     </div>
                                     <div class="form-group">
+                                        <label>企业微信推送</label>
+                                        <input class="form-control" type="text" id="wxboxpush" name="wxboxpush" placeholder="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx" th:value="${config.wxboxpush}">
+                                    </div>
+                                    <div class="form-group">
                                         <button class="btn btn-primary saveConfig" type="button">保存</button>
                                     </div>
                                 </form>
@@ -303,12 +307,16 @@
             var apptoken = $('#apptoken').val();
             var openprocesshistory = $('#openprocesshistory').val();
             var taskcron =$('#taskcron').val();
+            var wxboxpush =$('#wxboxpush').val();
             var option = {};
             option['id'] = appid;
             option['apptoken'] = apptoken;
             option['openprocesshistory'] = openprocesshistory;
             if(taskcron!=""){
                 option['taskcron'] = taskcron;
+            }
+            if(wxboxpush!=""){
+                option['wxboxpush'] = wxboxpush;
             }
             $.post("/admin/api/saveConfig",option,function(data,status){
                 if(data.resCode =="000001"){

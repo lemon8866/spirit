@@ -72,6 +72,10 @@ public class Global {
 
 	public static String twittercookies="";
 	
+	public static String wxboxpush="";
+	
+	public static boolean initcomplete=false;
+	
 	public static enum platform{
 		bilibili,
 		douyin,

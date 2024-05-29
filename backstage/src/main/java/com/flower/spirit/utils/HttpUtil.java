@@ -360,5 +360,6 @@ public class HttpUtil {
         bos.close();  
         return bos.toByteArray();  
     }
+    
 	
 }

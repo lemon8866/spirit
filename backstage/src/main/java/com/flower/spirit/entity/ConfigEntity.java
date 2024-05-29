@@ -35,6 +35,11 @@ public class ConfigEntity implements Serializable {
 	private String openprocesshistory;
 	
 	private String taskcron; //任务定时器
+	
+	/**
+	 * 企业微信Bot 
+	 */
+	private String wxboxpush;
 
 	public Integer getId() {
 		return id;
@@ -74,6 +79,14 @@ public class ConfigEntity implements Serializable {
 
 	public void setTaskcron(String taskcron) {
 		this.taskcron = taskcron;
+	}
+
+	public String getWxboxpush() {
+		return wxboxpush;
+	}
+
+	public void setWxboxpush(String wxboxpush) {
+		this.wxboxpush = wxboxpush;
 	}
 	
 	

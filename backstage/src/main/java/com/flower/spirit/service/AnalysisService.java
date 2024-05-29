@@ -43,6 +43,7 @@ import com.flower.spirit.utils.Steamcmd;
 import com.flower.spirit.utils.StringUtil;
 import com.flower.spirit.utils.TikTokUtil;
 import com.flower.spirit.utils.URLUtil;
+import com.flower.spirit.utils.WeChatUtil;
 import com.flower.spirit.utils.YouTuBeUtil;
 import com.flower.spirit.utils.YtDlpUtil;
 
@@ -211,7 +212,7 @@ public class AnalysisService {
 	        VideoDataEntity videoDataEntity = new VideoDataEntity(id,title, description, platform, coverunaddr, filepath,videounrealaddr,url);
 	        videoDataDao.save(videoDataEntity);
 			processHistoryService.saveProcess(saveProcess.getId(), url, platform);
-			
+			WeChatUtil.sendMessage(filename, "twitter", 1);
 		} catch (Exception e) {
 		
 		}
@@ -249,7 +250,7 @@ public class AnalysisService {
 	        VideoDataEntity videoDataEntity = new VideoDataEntity(id,title, description, platform, coverunaddr, filepath,videounrealaddr,url);
 	        videoDataDao.save(videoDataEntity);
 			processHistoryService.saveProcess(saveProcess.getId(), url, platform);
-			
+			WeChatUtil.sendMessage(filename, "instagram", 1);
 		} catch (Exception e) {
 		
 		}
@@ -342,7 +343,7 @@ public class AnalysisService {
 	        VideoDataEntity videoDataEntity = new VideoDataEntity(display_id,title, description, platform, coverunaddr, filepath,videounrealaddr,youtube);
 	        videoDataDao.save(videoDataEntity);
 			processHistoryService.saveProcess(saveProcess.getId(), youtube, platform);
-			
+			WeChatUtil.sendMessage(filename, "youtube", 1);
 			
 		} catch (Exception e) {
 			throw e;
@@ -377,6 +378,7 @@ public class AnalysisService {
 		        HttpUtil.downLoadFromUrl(cover, filename+".jpg", FileUtil.createTemporaryDirectory(Global.platform.tiktok.name(), filename, uploadRealPath)+"/");
 		        VideoDataEntity videoDataEntity = new VideoDataEntity(awemeid,desc, desc, platform, coverunaddr, videofile,videounrealaddr,url);
 		        videoDataDao.save(videoDataEntity);
+		        WeChatUtil.sendMessage(filename, "tiktok", 1);
 				logger.info("下载流程结束");
 			}
 		 processHistoryService.saveProcess(saveProcess.getId(), url, platform);
@@ -443,6 +445,7 @@ public class AnalysisService {
 					VideoDataEntity videoDataEntity = new VideoDataEntity(wallpaperId,title,title, "wallpaper", cosaddr+"/"+previewname, localapp+"/"+wallpaperId+"/"+filename,cosaddr+"/"+filename,video);
 				    videoDataDao.save(videoDataEntity);
 				    logger.info("下载流程结束");
+				    WeChatUtil.sendMessage(filename, "steam", 1);
 				} catch (IOException e) {
 					logger.info("建档异常-");
 				}
@@ -510,6 +513,7 @@ public class AnalysisService {
 				 VideoDataEntity videoDataEntity = new VideoDataEntity(map.get("cid"),map.get("title"), map.get("desc"), platform, coverunaddr, map.get("video"),videounaddr,video);
 			     videoDataDao.save(videoDataEntity);
 			     logger.info("下载流程结束");
+			     WeChatUtil.sendMessage(filename, "哔哩哔哩", 1);
 			     processHistoryService.saveProcess(saveProcess.getId(), video, platform);
 			 }
 		} catch (Exception e) {
@@ -576,6 +580,7 @@ public class AnalysisService {
         //推送完成后建立历史资料  此处注意  a2 地址需要与spring boot 一致否则 无法打开视频
         VideoDataEntity videoDataEntity = new VideoDataEntity(awemeId,desc, desc, platform, coverunaddr, videofile,videounrealaddr,originaladdress);
         videoDataDao.save(videoDataEntity);
+        WeChatUtil.sendMessage(filename, "抖音", 1);
 		logger.info("下载流程结束");
 	}
 	

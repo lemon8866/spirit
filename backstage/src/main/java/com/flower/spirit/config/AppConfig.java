@@ -56,6 +56,9 @@ public class AppConfig {
 		if(null != data.getOpenprocesshistory() && data.getOpenprocesshistory().equals("1")) {
 			Global.openprocesshistory =true;
 		}
+		if(null != data.getWxboxpush() && !"".equals(data.getWxboxpush())) {
+			Global.wxboxpush =data.getWxboxpush();
+		}
 		BiliConfigEntity bili = biliConfigService.getData();
 		Global.bilicookies =bili.getBilicookies();
 		if(null != bili.getBigmember() && bili.getBigmember().equals("是")) {
@@ -82,6 +85,7 @@ public class AppConfig {
 		//清空 ffmpeg 队列
 		ffmpegQueueService.clearTask();
 		logger.info("ffmpeg队列已清空");
+		Global.initcomplete =true;
 	}
 
 }
