@@ -19,7 +19,7 @@ RUN locale-gen en_US.UTF-8
 ENV LANG 'en_US.UTF-8'
 ENV LANGUAGE 'en_US:en'
 
-ARG YT_DLP_VERSION="2023.11.16"
+ARG YT_DLP_VERSION="2024.05.27"
 RUN wget -O /usr/local/bin/yt-dlp https://github.com/yt-dlp/yt-dlp/releases/download/${YT_DLP_VERSION}/yt-dlp && chmod a+rx /usr/local/bin/yt-dlp
 ENV YT_DLP_PATH /usr/local/bin/yt-dlp
 
