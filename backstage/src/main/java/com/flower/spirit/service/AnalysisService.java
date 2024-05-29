@@ -260,7 +260,7 @@ public class AnalysisService {
 	private void YouTube(String platform, String youtube) throws Exception {
 		ProcessHistoryEntity saveProcess = processHistoryService.saveProcess(null, youtube, platform);
 		try {
-			String exec = YouTuBeUtil.exec("https://www.youtube.com/watch?v=f7EDFdA10pg");
+			String exec = YouTuBeUtil.exec(youtube);
 			JSONObject parseObject = JSONObject.parseObject(exec);
 			String a_link ="";
 			String v_linl ="";
