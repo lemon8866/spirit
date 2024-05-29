@@ -41,11 +41,12 @@ public class ApiController {
 	@CrossOrigin
 	public AjaxEntity processingVideos(String token,String video) throws Exception {
 //		 analysisService.processingVideos(token,video);
-		if(!Global.initcomplete) {
-			return new AjaxEntity(Global.ajax_uri_error, "程序正在初始化", "");
+		if(Global.initcomplete) {
+			analysisService.processingVideos(token,video);
+			return new AjaxEntity(Global.ajax_success, "已提交,等待系统处理", "");
 		}
-		analysisService.processingVideos(token,video);
-		return new AjaxEntity(Global.ajax_success, "已提交,等待系统处理", "");
+		return new AjaxEntity(Global.ajax_uri_error, "程序正在初始化...", "");
+	
 	
 	}
 
