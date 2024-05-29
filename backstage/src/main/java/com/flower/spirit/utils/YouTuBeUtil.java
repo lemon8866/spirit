@@ -47,8 +47,8 @@ public class YouTuBeUtil {
 			String title= parseObject.getString("title");
 			String description= parseObject.getString("description");
 			String display_id= parseObject.getString("display_id");
-			if(parseObject.containsKey("requested_formats")) {
-				JSONArray jsonArray = parseObject.getJSONArray("requested_formats");
+			if(parseObject.containsKey("formats")) {
+				JSONArray jsonArray = parseObject.getJSONArray("formats");
 				for(int i = 0;i<jsonArray.size();i++) {
 					JSONObject jsonObject = jsonArray.getJSONObject(i);
 					String ext = jsonObject.getString("video_ext");
